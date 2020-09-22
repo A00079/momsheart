@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     videoonmobile: {
-        border: '3px dashed yellow', 
+        border: '3px solid yellow', 
         height: '75vh',
         width: '100%',
         objectFit: 'cover',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,14 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import firebase from "../../src/firestore.js";
+import { withRouter, Redirect } from "react-router";
+import { notify } from 'react-notify-toast';
 
 function Copyright() {
 
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="">
+        @Team Pratham
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -48,23 +50,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp = ({ history }) => {
   const classes = useStyles();
-  const [email, setemail] = useState('');
+  const [useremail, setuesremail] = useState('');
+  const [userpassword, setpassword] = useState('');
 
   const handelemail = (value) =>{
-    setemail(value.target.value)
+    setuesremail(value.target.value)
   }
-
-  const handelOnSubmit = () => {
-    const db = firebase.firestore();
-    db.settings({});
-    const userRef = db.collection('users').add({
-      email: email,
-    });
-    setemail('')
+  const handelpassword = (value) =>{
+    setpassword(value.target.value)
   }
+  const handelOnSubmit = () =>{
+      try {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(useremail, userpassword);
+          notify.show('Logged In Successfully', "custom", 4000, { background: '#0E1717', text: "#FFFFFF" })
 
+        history.push("/");
+      } catch (error) {
+        window.alert(error);
+      }
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -83,6 +91,7 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
+                type="email"
                 id="email"
                 label="Email Address"
                 name="email"
@@ -91,6 +100,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={(e) => handelpassword(e)}
                 variant="outlined"
                 required
                 fullWidth
@@ -114,7 +124,7 @@ export default function SignUp() {
           <Grid container justify="flex-end">
             <Grid item>
               <p  variant="body2">
-                Don't have an account?<Link to="/signup"> Sign Up</Link>
+                Don't have an account?<a href="/signup" className="text-blue-700"> Sign Up</a>
               </p>
             </Grid>
           </Grid>
@@ -126,3 +136,5 @@ export default function SignUp() {
     </Container>
   );
 }
+
+export default withRouter(SignUp);

@@ -11,11 +11,11 @@ class About extends Component {
                 <section class="text-gray-700 body-font" id="aboutus">
                     <div class="container px-5 py-24 mx-auto">
                         <div class="text-center mb-20">
-                        <h3 class="text-3xl sm:text-5xl md:text-4xl md:mt-16 leading-normal font-extrabold  tracking-tight text-gray-900 text-center mb-0 mt-0  sm:mb-16">
-                            ABO<span class="text-indigo-600">UT</span>
-                        </h3>
+                            <h3 class="text-3xl sm:text-5xl md:text-4xl md:mt-16 leading-normal font-extrabold  tracking-tight text-gray-900 text-center mb-0 mt-0  sm:mb-16">
+                                ABO<span class="text-indigo-600">UT</span>
+                            </h3>
                             {/* <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">About</h1> */}
-                            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">As we all know that every person have some unique Talent/Skills
+                            <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">Moms heart is organized and handles by <h2 class="text-gray-900 text-md title-font font-medium mb-2">Ms.Shikha Bharat Singh</h2> As we all know that every person have some unique Talent/Skills
 So we are here for you to share your unique skills in front of world
 and we will improve it in best way...</p>
                             <div class="flex mt-6 justify-center">
@@ -48,10 +48,11 @@ and we will improve it in best way...</p>
                                 </div>
                                 <div class="flex-grow pl-6" data-aos="fade-right">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Why us?</h2>
-                                    <p class="leading-relaxed text-base">1)We will provide winning amount to TOP 3 winners of each age categories<br />
-2)For all participants we are going to give 5 Options of online classes/Workshop through professional teachers,
+                                    <p class="leading-relaxed text-base">
+                                        1.We will provide winning amount to TOP 3 winners of each age categories<br />
+                                        2.For all participants we are going to give 5 Options of online classes/Workshop through professional teachers,
     so each participants will choose one and learn<br />
-3)Our every participants is also going to have Casting updates for Advertise Shoots,Serials,WebSeries.
+                                        3.Our every participants is also going to have Casting updates for Advertise Shoots,Serials,WebSeries.
 </p>
                                     {/* <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">

@@ -13,14 +13,17 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import firebase from "../../src/firestore.js";
+import { useHistory } from "react-router-dom";
+import { notify } from 'react-notify-toast';
+
 
 function Copyright() {
 
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="">
+        @Team Pratham
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -49,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const history = useHistory();
   const classes = useStyles();
   const [first_name, setfirst_name] = useState('');
   const [last_name, setlast_name] = useState('');
@@ -57,50 +61,63 @@ export default function SignUp() {
   const [age, setage] = useState('');
   const [phone_number, setphone_number] = useState('');
   const [skills, setskills] = useState('');
+  const [password, setpassword] = useState('');
 
-  const handelfirstname = (value) =>{
+  const handelfirstname = (value) => {
     setfirst_name(value.target.value)
   }
-  const handellastname = (value) =>{
+  const handellastname = (value) => {
     setlast_name(value.target.value)
   }
-  const handelemail = (value) =>{
+  const handelemail = (value) => {
     setemail(value.target.value)
   }
-  const handellocation = (value) =>{
+  const handellocation = (value) => {
     setlocation(value.target.value)
   }
-  const handelage = (value) =>{
+  const handelage = (value) => {
     setage(value.target.value)
   }
-  const handelphoneno = (value) =>{
+  const handelphoneno = (value) => {
     setphone_number(value.target.value)
   }
-  const handelskills = (value) =>{
+  const handelskills = (value) => {
     setskills(value.target.value)
   }
-
+  const handelpassword = (value) => {
+    setpassword(value.target.value)
+  }
   const handelOnSubmit = () => {
     const db = firebase.firestore();
     db.settings({});
-    const userRef = db.collection('users').add({
-      first_name: first_name,
-      last_name: last_name,
-      email: email,
-      location: location,
-      age: age,
-      phone_number: phone_number,
-      skills: skills
-    });
-    setfirst_name('')
-    setlast_name('')
-    setemail('')
-    setlocation('')
-    setage('')
-    setphone_number('')
-    setskills('')
-  }
 
+    firebase.auth().createUserWithEmailAndPassword(email, password).then((u) => {
+    }).then((u) => { 
+      const userRef = db.collection('users').add({
+        first_name: first_name,
+        last_name: last_name,
+        email: email,
+        location: location,
+        age: age,
+        phone_number: phone_number,
+        skills: skills
+      });
+      document.getElementById('firstName').value = '';
+      document.getElementById('lastName').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('age').value = '';
+      document.getElementById('skill').value = '';
+      document.getElementById('location').value = '';
+      document.getElementById('phoneno').value = '';
+      document.getElementById('password').value = '';
+      history.push("/signin");
+      notify.show('Registration Successfully', "custom", 4000, { background: '#0E1717', text: "#FFFFFF" })
+    })
+    .catch((error) => {
+      window.alert(error.message)
+      console.log(error);
+    })
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -202,6 +219,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                onChange={(e) => handelpassword(e)}
                 variant="outlined"
                 required
                 fullWidth
@@ -224,7 +242,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/signin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
