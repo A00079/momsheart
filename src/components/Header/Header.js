@@ -1,0 +1,113 @@
+import {
+    AppBar,
+    Container,
+    Hidden,
+    IconButton,
+    List,
+    ListItem,
+    ListItemText,
+    makeStyles,
+    Toolbar,
+    Fab
+  } from "@material-ui/core";
+  import { Home, KeyboardArrowUp } from "@material-ui/icons";
+  import * as React from "react";
+  import BackToTop from "./BackToTop";
+  import SideDrawer from "./SideDrawer";
+  import * as Scroll from 'react-scroll';
+  import MenuList from './MenuList/MenuList.js';
+  import logo from '../../assets/img/momslogo.jpg';
+  
+  let DirectLinkDiv = Scroll.Link;
+  const useStyles = makeStyles({
+    navbarDisplayFlex: {
+      display: `flex`,
+      justifyContent: `space-between`
+    },
+    navListDisplayFlex: {
+      display: `flex`,
+      justifyContent: `space-between`
+    },
+    linkText: {
+      textDecoration: `none`,
+      textTransform: `uppercase`,
+      color: `white`
+    }
+  });
+  
+  const Header = () => {
+    const classes = useStyles();
+  
+    return (
+      <>
+          <AppBar color='transparent' position="fixed">
+            <Toolbar component="nav">
+              <Container maxWidth="md" className={classes.navbarDisplayFlex}>
+                <IconButton edge="start" aria-label="home">
+                  <a href="/" style={{ color: `white`,textDecoration: 'none' }}>
+                    {/* <Home fontSize="large" /> */}
+                    <img style={{ width: '200px',borderRadius: '10px'}} src={logo} />
+                  </a>
+                </IconButton>
+  
+                <Hidden smDown>
+                  <List
+                    component="nav"
+                    aria-labelledby="main navigation"
+                    className={classes.navListDisplayFlex}
+                  >
+                    <ListItem button>
+                        <ListItemText>
+                          Home
+                        </ListItemText>
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemText>
+                        <DirectLinkDiv
+                          to="aboutus"
+                          spy={true}
+                          smooth={true}
+                          offset={50}
+                          duration={500}
+                        >
+                          About
+                        </DirectLinkDiv>
+                        </ListItemText>
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemText>
+                        <DirectLinkDiv
+                          to="contact"
+                          spy={true}
+                          smooth={true}
+                          offset={50}
+                          duration={500}
+                        >
+                          Contact
+                        </DirectLinkDiv>
+                        </ListItemText>
+                    </ListItem>
+                    <ListItem button>
+                        <ListItemText><MenuList /></ListItemText>
+                    </ListItem>
+                  </List>
+                </Hidden>
+                <Hidden mdUp>
+                  <SideDrawer />
+                </Hidden>
+              </Container>
+            </Toolbar>
+          </AppBar>
+        <Toolbar id="back-to-top-anchor" />
+  
+        <BackToTop>
+          <Fab color="secondary" size="large" aria-label="scroll back to top">
+            <KeyboardArrowUp />
+          </Fab>
+        </BackToTop>
+      </>
+    );
+  };
+  
+  export default Header;
+  
