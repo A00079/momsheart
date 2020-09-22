@@ -17,7 +17,7 @@ const LandingScreen = () => {
         <React.Fragment>
             <Header />
 
-            <div class="relative h-screen w-full flex items-center justify-center bg-cover bg-center text-center" style={{ backgroundImage: "url(https://i.postimg.cc/KcBfdgnb/web-back.jpg)" }}>
+            <div class="relative h-screen w-full mt-2 flex items-center justify-center bg-cover bg-center text-center" style={{ backgroundImage: "url(https://i.postimg.cc/KcBfdgnb/web-back.jpg)" }}>
                 <div class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
 
                 <div class="z-50  w-full ">
@@ -32,7 +32,7 @@ const LandingScreen = () => {
             <div data-aos="fade-up" className="main-about">
                 <GetInTouch />
             </div>
-            <div data-aos="fade-left" className="main-contact md:mt-24">
+            <div data-aos="fade-up" className="main-contact md:mt-24">
                 <Contact />
             </div>
             <div className="main-footer">

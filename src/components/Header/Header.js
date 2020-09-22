@@ -31,7 +31,7 @@ import {
     linkText: {
       textDecoration: `none`,
       textTransform: `uppercase`,
-      color: `white`
+      color: `black`
     }
   });
   
@@ -44,7 +44,7 @@ import {
             <Toolbar component="nav">
               <Container maxWidth="md" className={classes.navbarDisplayFlex}>
                 <IconButton edge="start" aria-label="home">
-                  <a href="/" style={{ color: `white`,textDecoration: 'none' }}>
+                  <a href="/" style={{ color: `black`,textDecoration: 'none' }}>
                     {/* <Home fontSize="large" /> */}
                     <img style={{ width: '200px',borderRadius: '10px'}} src={logo} />
                   </a>
