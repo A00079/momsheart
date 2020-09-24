@@ -43,7 +43,7 @@ const Payment = () => {
     }
     const paymentHandler = async (prefilldata) => {
         console.log('call received ...',prefilldata)
-        const API_URL = 'http://localhost:5000/'
+        const API_URL = '/order'
         const orderUrl = `${API_URL}order`;
         const response = await Axios.get(orderUrl);
         const { data } = response;
