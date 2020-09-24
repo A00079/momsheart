@@ -51,8 +51,8 @@ and we will improve it in best way...</p>
                                     <p class="leading-relaxed text-base">
                                         1.We will provide winning amount to TOP 3 winners of each age categories<br />
                                         2.For all participants we are going to give 5 Options of online classes/Workshop through professional teachers,
-    so each participants will choose one and learn<br />
-                                        3.Our every participants is also going to have Casting updates for Advertise Shoots,Serials,WebSeries.
+    so each participants will choose two and learn<br />
+                                        3.Our every participants is also going to have Casting updates for Ads Shoots,Serials,WebSeries etc.
 </p>
                                     {/* <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">

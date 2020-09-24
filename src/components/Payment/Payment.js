@@ -1,20 +1,55 @@
 import React, { Component } from 'react';
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import firebase from '../../firestore.js';
 
 const Axios = require('axios');
-
+let rzp1 = null;
 const Payment = () => {
-    const history = useHistory();
+    // const history = useHistory();
 
-    const paymentHandler = async (e) => {
+    const findUsersMatchingEmail = () => {
+
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                const db = firebase.firestore();
+                db.collection("users").where("email", "==", user.email)
+                    .get()
+                    .then(function (querySnapshot) {
+                        querySnapshot.forEach(function (doc) {
+                            // doc.data() is never undefined for query doc snapshots
+                            console.log(doc.id, " => ", doc.data());
+                            paymentHandler(doc.data())
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log("Error getting documents: ", error);
+                    });
+            } else {
+                // No user is signed in.
+            }
+        });
+
+
+        // docRef.get().then(function (doc) {
+        //     if (doc.exists) {
+        //         console.log("Document data:", doc.data());
+        //     } else {
+        //         // doc.data() will be undefined in this case
+        //         console.log("No such document!");
+        //     }
+        // }).catch(function (error) {
+        //     console.log("Error getting document:", error);
+        // });
+    }
+    const paymentHandler = async (prefilldata) => {
+        console.log('call received ...',prefilldata)
         const API_URL = 'http://localhost:5000/'
-        e.preventDefault();
         const orderUrl = `${API_URL}order`;
         const response = await Axios.get(orderUrl);
         const { data } = response;
         const options = {
             key: 'rzp_test_YrnOpH7uVFOaai',
-            name: "MoM's Heats",
+            name: "MoM's Heart",
             description: "Subscribtion fee.",
             order_id: data.id,
             handler: async (response) => {
@@ -22,19 +57,26 @@ const Payment = () => {
                     const paymentId = response.razorpay_payment_id;
                     const url = `${API_URL}capture/${paymentId}`;
                     const captureResponse = await Axios.post(url, {})
-                    history.push("/review");
+                    // history.push("/review");
                     console.log(captureResponse.data);
                 } catch (err) {
                     console.log(err);
                 }
             },
+            prefill: {
+                name: prefilldata.first_name +' '+ prefilldata.last_name,
+                email: prefilldata.email,
+                contact: prefilldata.phone_number
+            },
             theme: {
                 color: "#686CFD",
             },
         };
-        const rzp1 = new window.Razorpay(options);
+        rzp1 = null;
+        rzp1 = new window.Razorpay(options);
         rzp1.open();
     };
+
     return (
         <React.Fragment>
             <section class="text-gray-700 body-font">
@@ -42,9 +84,9 @@ const Payment = () => {
                     <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://picsum.photos/720/600" />
                     <div class="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
                         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Thankyou for joining MoM's Heart.</h1>
-                        <p class="mb-8 leading-relaxed">To get all exclusive features and interesting updates.Please help us with your contribution.</p>
+                        {/* <p class="mb-8 leading-relaxed">To get all exclusive features and interesting updates.Please help us with your contribution.</p> */}
                         <div class="flex w-full justify-center">
-                            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={paymentHandler}>Pay Now</button>
+                            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={() => findUsersMatchingEmail()}>Pay Now</button>
                         </div>
                         <div class="flex mt-4">
                             {/* <button class="bg-gray-200 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-300 focus:outline-none">

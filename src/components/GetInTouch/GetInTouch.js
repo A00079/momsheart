@@ -18,7 +18,7 @@ const GetInTouch = () =>{
                     <div class="container px-5 md:py-8 mx-auto">
                         <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
                             <h1 class="flex-grow sm:pr-16 text-center md:text-left text-2xl font-medium title-font text-gray-900">Still if you have queries connect directly with us</h1>
-                            <ReactWhatsapp number="9324098389" message="Hello !!!">
+                            <ReactWhatsapp number="919324098389" message="Hello !!!">
                             <button class="flex-shrink-0 text-white ml-24 md:ml-0 bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
                                 Get In Touch
                             </button>

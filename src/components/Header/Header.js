@@ -40,7 +40,7 @@ import {
   
     return (
       <>
-          <AppBar color='transparent' position="fixed">
+          <AppBar color='inherit' position="fixed">
             <Toolbar component="nav">
               <Container maxWidth="md" className={classes.navbarDisplayFlex}>
                 <IconButton edge="start" aria-label="home">
@@ -87,9 +87,9 @@ import {
                         </DirectLinkDiv>
                         </ListItemText>
                     </ListItem>
-                    <ListItem button>
+                    {/* <ListItem button>
                         <ListItemText><MenuList /></ListItemText>
-                    </ListItem>
+                    </ListItem> */}
                   </List>
                 </Hidden>
                 <Hidden mdUp>

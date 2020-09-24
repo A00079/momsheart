@@ -8,17 +8,18 @@ import Favicon from 'react-favicon';
 import logo from '../src/assets/img/momslogo.jpg';
 import Notifications from 'react-notify-toast';
 import Payment from '../src/components/Payment/Payment.js';
-
 function App() {
   return (
     <div className="App">
       <Notifications />
       <Favicon url={logo} />
       <Router>
-        <Route exact path="/" component={LandingScreen} />
-        <Route  path="/signup" component={SignUp} />
-        <Route  path="/signin" component={SignIn} />
-        <Route  path="/cash-less-pay-ment" component={Payment} />
+        <Switch>
+          <Route exact path="/" component={LandingScreen} />
+          {/* <Route exact path="/signup" component={SignUp} /> */}
+          {/* <Route exact path="/signin" component={SignIn} /> */}
+          <Route exact path="/cash-less-pay-ment" component={Payment} />
+        </Switch>
       </Router>
     </div>
   );

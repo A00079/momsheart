@@ -8,8 +8,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
-import Link from '@material-ui/core/Link';
-
+// import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
+import * as Scroll from 'react-scroll';
+let DirectLinkDiv = Scroll.Link;
 const StyledMenu = withStyles({
   paper: {
     border: '1px solid #d3d4d5',
@@ -70,25 +72,39 @@ export default function CustomizedMenus() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <StyledMenuItem>
-          <a href='/signin' style={{display: 'contents'}}>
+        {/* <StyledMenuItem>
+          <Link  to='/signin' style={{display: 'contents'}}>
             <ListItemIcon>
               <SendIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText>
-              <span >Sign In</span>
+            <DirectLinkDiv
+                          to="signIn"
+                          spy={true}
+                          smooth={true}
+                          offset={50}
+                          duration={500}
+                        >
+                          Sign In
+                        </DirectLinkDiv>
             </ListItemText>
-          </a>
-        </StyledMenuItem>
+          </Link>
+        </StyledMenuItem> */}
         <StyledMenuItem>
-          <a href='/signup' style={{display: 'contents'}}>
             <ListItemIcon>
               <DraftsIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText>
-              <span >Sign Up</span>
+            <DirectLinkDiv
+                          to="signUp"
+                          spy={true}
+                          smooth={true}
+                          offset={50}
+                          duration={500}
+                        >
+                          Sign Up
+                        </DirectLinkDiv>
             </ListItemText>
-          </a>
         </StyledMenuItem>
       </StyledMenu>
     </div>

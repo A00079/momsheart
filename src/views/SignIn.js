@@ -55,28 +55,28 @@ const SignUp = ({ history }) => {
   const [useremail, setuesremail] = useState('');
   const [userpassword, setpassword] = useState('');
 
-  const handelemail = (value) =>{
+  const handelemail = (value) => {
     setuesremail(value.target.value)
   }
-  const handelpassword = (value) =>{
+  const handelpassword = (value) => {
     setpassword(value.target.value)
   }
-  const handelOnSubmit = () =>{
-      try {
-        firebase
-          .auth()
-          .signInWithEmailAndPassword(useremail, userpassword);
-          notify.show('Logged In Successfully', "custom", 4000, { background: '#0E1717', text: "#FFFFFF" })
-
-        history.push("/");
-      } catch (error) {
-        window.alert(error);
-      }
+  const handelOnSubmit = () => {
+    try {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(useremail, userpassword).then((data) => {
+          window.alert('You are successfully logged in. Please contact us for more information.')
+        })
+      // history.push("/cash-less-pay-ment");
+    } catch (error) {
+      window.alert(error);
+    }
   }
   return (
-    <Container component="main" maxWidth="xs">
+    <Container maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div className={classes.paper} id='signIn'>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -123,7 +123,7 @@ const SignUp = ({ history }) => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <p  variant="body2">
+              <p variant="body2">
                 Don't have an account?<a href="/signup" className="text-blue-700"> Sign Up</a>
               </p>
             </Grid>

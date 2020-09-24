@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -15,21 +15,22 @@ import Container from '@material-ui/core/Container';
 import firebase from "../../src/firestore.js";
 import { useHistory } from "react-router-dom";
 import { notify } from 'react-notify-toast';
+import { Link } from 'react-router-dom';
 
 
-function Copyright() {
+// function Copyright() {
 
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="">
-        @Team Pratham
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link color="inherit" href="">
+//         @Team Pratham
+//       </Link>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -110,8 +111,8 @@ export default function SignUp() {
       document.getElementById('location').value = '';
       document.getElementById('phoneno').value = '';
       document.getElementById('password').value = '';
-      history.push("/signin");
-      notify.show('Registration Successfully', "custom", 4000, { background: '#0E1717', text: "#FFFFFF" })
+      // history.push("/signin");
+      notify.show('You are successfully Registration in. Please contact us for more information.', "custom", 4000, { background: '#0E1717', text: "#FFFFFF" })
     })
     .catch((error) => {
       window.alert(error.message)
@@ -119,9 +120,9 @@ export default function SignUp() {
     })
   }
   return (
-    <Container component="main" maxWidth="xs">
+    <Container  maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <div className={classes.paper} id="signUp">
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -240,17 +241,17 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          {/* <Grid container justify="flex-end">
             <Grid item>
-              <Link href="/signin" variant="body2">
+              <Link  to="/signin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
-          </Grid>
+          </Grid> */}
         </form>
       </div>
       <Box mt={5}>
-        <Copyright />
+        {/* <Copyright /> */}
       </Box>
     </Container>
   );

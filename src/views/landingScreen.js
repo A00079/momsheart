@@ -5,6 +5,9 @@ import About from '../components/About/About.js';
 import GetInTouch from '../components/GetInTouch/GetInTouch.js';
 import Contact from '../components/Contact/Contact.js';
 import Footer from '../components/Footer/Footer.js';
+import SignUp from '../views/SignUp.js';
+import SignIn from '../views/SignIn.js';
+
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 const LandingScreen = () => {
@@ -17,9 +20,8 @@ const LandingScreen = () => {
         <React.Fragment>
             <Header />
 
-            <div class="relative h-screen w-full mt-2 flex items-center justify-center bg-cover bg-center text-center" style={{ backgroundImage: "url(https://i.postimg.cc/KcBfdgnb/web-back.jpg)" }}>
-                <div class="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
-
+            {/* <div class="relative h-screen w-full mt-2 flex items-center justify-center bg-cover bg-center text-center" style={{ backgroundImage: "url(https://i.postimg.cc/KcBfdgnb/web-back.jpg)" }}> */}
+            <div class="relative h-screen w-full mt-2 flex items-center justify-center bg-cover bg-center text-center" style={{ backgroundColor: "black"}}>
                 <div class="z-50  w-full ">
                     <div className="main-section z-50 ">
                         <MainSection />
@@ -32,7 +34,16 @@ const LandingScreen = () => {
             <div data-aos="fade-up" className="main-about">
                 <GetInTouch />
             </div>
-            <div data-aos="fade-up" className="main-contact md:mt-24">
+            {/* <div data-aos="fade-up" className="main-about">
+                <GetInTouch />
+            </div> */}
+            <div  className=" md:mt-24">
+                <SignUp />
+            </div>
+            <div  className=" md:mt-24">
+                <SignIn />
+            </div>
+            <div  className=" md:mt-24">
                 <Contact />
             </div>
             <div className="main-footer">
