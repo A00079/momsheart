@@ -5,7 +5,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -15,6 +14,7 @@ import Container from '@material-ui/core/Container';
 import firebase from "../../src/firestore.js";
 import { withRouter, Redirect } from "react-router";
 import { notify } from 'react-notify-toast';
+import { Link } from 'react-router-dom';
 
 function Copyright() {
 
@@ -62,15 +62,18 @@ const SignUp = ({ history }) => {
     setpassword(value.target.value)
   }
   const handelOnSubmit = () => {
-    try {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(useremail, userpassword).then((data) => {
-          window.alert('You are successfully logged in. Please contact us for more information.')
-        })
-      // history.push("/cash-less-pay-ment");
-    } catch (error) {
-      window.alert(error);
+    if(!!useremail && !!userpassword){
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(useremail, userpassword).then((data) => {
+            notify.show('Successfully Logged In.', "custom", 4000,{ background: '#0E1717', text: "#FFFFFF",top: '500px' })
+            sessionStorage.setItem("sessionid", data.user.l+data.user.uid);
+            history.push("/cash-less-pay-ment/"+data.user.l+data.user.uid);
+          }).catch((e) =>{
+            notify.show(e.message, "custom", 4000, { background: '#0E1717', text: "#FFFFFF",top: '50px' })
+          })
+    }else{
+      notify.show('All fields are mandatory.', "custom", 4000, { top: '50px',background: '#0E1717', text: "#FFFFFF" })
     }
   }
   return (
@@ -124,7 +127,7 @@ const SignUp = ({ history }) => {
           <Grid container justify="flex-end">
             <Grid item>
               <p variant="body2">
-                Don't have an account?<a href="/signup" className="text-blue-700"> Sign Up</a>
+                Don't have an account? <Link to="/signup" className="text-blue-700"> Sign Up</Link>
               </p>
             </Grid>
           </Grid>

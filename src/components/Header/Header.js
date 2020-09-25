@@ -58,7 +58,15 @@ import {
                   >
                     <ListItem button>
                         <ListItemText>
+                        <DirectLinkDiv
+                          to="home"
+                          spy={true}
+                          smooth={true}
+                          offset={50}
+                          duration={500}
+                        >
                           Home
+                          </DirectLinkDiv>
                         </ListItemText>
                     </ListItem>
                     <ListItem button>

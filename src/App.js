@@ -16,9 +16,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={LandingScreen} />
-          {/* <Route exact path="/signup" component={SignUp} /> */}
-          {/* <Route exact path="/signin" component={SignIn} /> */}
-          <Route exact path="/cash-less-pay-ment" component={Payment} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/cash-less-pay-ment/:id" component={Payment} />
         </Switch>
       </Router>
     </div>

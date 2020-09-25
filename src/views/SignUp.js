@@ -18,19 +18,19 @@ import { notify } from 'react-notify-toast';
 import { Link } from 'react-router-dom';
 
 
-// function Copyright() {
+function Copyright() {
 
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="">
-//         @Team Pratham
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="">
+        @Team Pratham
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -89,8 +89,9 @@ export default function SignUp() {
     setpassword(value.target.value)
   }
   const handelOnSubmit = () => {
-    const db = firebase.firestore();
-    db.settings({});
+    if(!!first_name && !!last_name && !!email && !!location && !!age && !!phone_number && !!skills && !!password){
+      const db = firebase.firestore();
+      db.settings({});
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then((u) => {
     }).then((u) => { 
@@ -111,13 +112,15 @@ export default function SignUp() {
       document.getElementById('location').value = '';
       document.getElementById('phoneno').value = '';
       document.getElementById('password').value = '';
-      // history.push("/signin");
-      notify.show('You are successfully Registration in. Please contact us for more information.', "custom", 4000, { background: '#0E1717', text: "#FFFFFF" })
+      notify.show('You are successfully Registration. Please contact us for more information.', "custom", 4000,{top: '50px'}, { background: '#0E1717', text: "#FFFFFF" })
+      history.push("/signin");
     })
     .catch((error) => {
       window.alert(error.message)
-      console.log(error);
     })
+    }else{
+      notify.show('All fields are mandatory.', "custom", 4000, { top: '50px',background: '#0E1717', text: "#FFFFFF" })
+    }
   }
   return (
     <Container  maxWidth="xs">
@@ -241,17 +244,15 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-          {/* <Grid container justify="flex-end">
+          <Grid container justify="flex-end">
             <Grid item>
-              <Link  to="/signin" variant="body2">
-                Already have an account? Sign in
-              </Link>
+                Already have an account? <Link  to="/signin" variant="body2"><span className='text-blue-700'> Sign in</span></Link>
             </Grid>
-          </Grid> */}
+          </Grid>
         </form>
       </div>
       <Box mt={5}>
-        {/* <Copyright /> */}
+        <Copyright />
       </Box>
     </Container>
   );

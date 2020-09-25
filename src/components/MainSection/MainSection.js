@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import video from '../../assets/videos/homevideo.mp4';
 import { makeStyles } from '@material-ui/core/styles';
-// import Link from '@material-ui/core/Link';
 import { Link } from 'react-router-dom';
 import * as Scroll from 'react-scroll';
   
@@ -37,18 +36,9 @@ const MainSection = () =>{
                             </h1>
                             <p style={{color: '#fff'}} className="mb-8 leading-relaxed">Join with us to give wings to your skills.</p>
                             <div class="flex w-full justify-center">
-                            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                
-                                <DirectLinkDiv
-                          to="signUp"
-                          spy={true}
-                          smooth={true}
-                          offset={50}
-                          duration={500}
-                        >
-                          Join Us
-                        </DirectLinkDiv>
-                                </button>
+                            <Link to='/signup'>
+                            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Join Us</button>
+                            </Link>
                         </div>
                         </div>
                     </div>
