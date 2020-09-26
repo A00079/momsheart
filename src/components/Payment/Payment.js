@@ -45,7 +45,7 @@ const Payment = (props) => {
         });
     }
     const paymentHandler = async (prefilldata, razorpay) => {
-        const API_URL = 'http://localhost:5000/'
+        const API_URL = 'https://www.momshearts.in/'
         const orderUrl = `${API_URL}order`;
         const response = await Axios.get(orderUrl);
         const { data } = response;
