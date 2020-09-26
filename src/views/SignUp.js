@@ -23,7 +23,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="">
+      <Link color="inherit" to="/">
         @Team Pratham
       </Link>{' '}
       {new Date().getFullYear()}
@@ -112,7 +112,7 @@ export default function SignUp() {
       document.getElementById('location').value = '';
       document.getElementById('phoneno').value = '';
       document.getElementById('password').value = '';
-      notify.show('You are successfully Registration. Please contact us for more information.', "custom", 4000,{top: '50px'}, { background: '#0E1717', text: "#FFFFFF" })
+      notify.show('You are successfully Registration. Please contact us for more information.', "custom", 4000,{ background: '#0E1717', text: "#FFFFFF" })
       history.push("/signin");
     })
     .catch((error) => {

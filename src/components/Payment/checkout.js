@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -63,9 +63,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Checkout() {
+export default function Checkout(props) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    const [paydetails, setpaydetails] = React.useState([]);
+    useEffect(() =>{
+        setpaydetails(props.location.state);
+        console.log('props checkout',paydetails)
+    },[props])
 
     return (
         <React.Fragment>
@@ -73,7 +78,7 @@ export default function Checkout() {
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <React.Fragment>
-                        <Review />
+                        <Review paydetails={paydetails} />
                     </React.Fragment>
                 </Paper>
                 <Copyright />

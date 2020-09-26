@@ -21,8 +21,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="">
-        @Team Pratham
+      <Link color="inherit" to="/">
+        @Team Prathams
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
