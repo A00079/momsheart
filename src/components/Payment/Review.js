@@ -7,6 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 const products = [
   { name: 'Product 1', desc: 'A nice thing', price: '$9.99' },
@@ -36,10 +37,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Review(props) {
+  const history = useHistory();
   const classes = useStyles();
-  useEffect(() => {
-    console.log('rewiew', props.paydetails)
-  }, [props])
+
+  const handelLogout = () =>{
+    sessionStorage.clear()
+    history.push('/')
+  }
 
   return (
     <React.Fragment>
@@ -112,11 +116,11 @@ export default function Review(props) {
           </Grid>
         </Grid>
         <Grid item container direction="column" xs={12} sm={12}>
-          <Link to='/'>
-            <Button variant="contained" color="primary">
+          
+            <Button onClick={() =>{handelLogout()}} variant="contained" color="primary">
               Back To Home
           </Button>
-          </Link>
+          
         </Grid>
       </Grid>
     </React.Fragment>
