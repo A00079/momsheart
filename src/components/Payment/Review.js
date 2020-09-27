@@ -42,7 +42,7 @@ export default function Review(props) {
 
   const handelLogout = () =>{
     sessionStorage.clear()
-    history.push('/')
+    window.location = "/";
   }
 
   return (

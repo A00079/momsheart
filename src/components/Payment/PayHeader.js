@@ -41,7 +41,7 @@ const Header = () => {
 
     const Logout = () =>{
         sessionStorage.clear()
-        history.push('/')
+        window.location = "/";
     }
 
     return (

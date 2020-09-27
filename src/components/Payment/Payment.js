@@ -13,7 +13,7 @@ const Payment = (props) => {
     useEffect(() => {
 
         if (sessionStorage.getItem("sessionid") !== props.match.params.id) {
-            history.push('/')
+            window.location = "/";
         } else { }
     }, [])
 
