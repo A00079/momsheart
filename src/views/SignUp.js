@@ -17,6 +17,7 @@ import { useHistory } from "react-router-dom";
 import { notify } from 'react-notify-toast';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner/Spinner.js';
+import Navbar from '../components/SignInUp/SignInUp.js';
 
 function Copyright() {
 
@@ -132,6 +133,9 @@ export default function SignUp() {
     }
   }
   return (
+    <React.Fragment>
+    <Navbar />
+
     <Container  maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper} id="signUp">
@@ -269,5 +273,6 @@ export default function SignUp() {
         <Copyright />
       </Box>
     </Container>
+    </React.Fragment>
   );
 }

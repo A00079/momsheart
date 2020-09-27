@@ -16,6 +16,7 @@ import { withRouter, Redirect } from "react-router";
 import { notify } from 'react-notify-toast';
 import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner/Spinner.js';
+import Header from '../components/SignInUp/SignInUp.js';
 function Copyright() {
 
   return (
@@ -83,9 +84,13 @@ const SignUp = ({ history }) => {
     }
   }
   return (
+    <React.Fragment>
+    
+
     <Container maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper} id='signIn'>
+      <Header />
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -148,6 +153,7 @@ const SignUp = ({ history }) => {
         <Copyright />
       </Box>
     </Container>
+    </React.Fragment>
   );
 }
 
