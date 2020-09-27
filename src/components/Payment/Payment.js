@@ -4,6 +4,8 @@ import firebase from '../../firestore.js';
 import PaymentHeader from './PayHeader.js';
 import { notify } from 'react-notify-toast';
 import Spinner from '../Spinner/Spinner.js';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import PaymentLogo from '../../assets/img/PaymentLogo.png';
 const Axios = require('axios');
 const Payment = (props) => {
     const history = useHistory();
@@ -124,10 +126,10 @@ const Payment = (props) => {
                 <PaymentHeader />
                 <section class="text-gray-700 body-font">
                     <div class="container mx-auto flex flex-col px-5 py-8 justify-center items-center">
-                        <img class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src="https://picsum.photos/720/600" />
+                        <img class="lg:w-1/1 md:w-1/6 w-1/1 mb-10 object-cover object-center rounded" alt="hero" src={PaymentLogo} />
                         <div class="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
-                            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Thankyou for joining Mom's Heart.</h1>
-                            <p class="mb-8 leading-relaxed">To get all exclusive features and interesting updates.Please help us with your contribution.</p>
+                            <h1 class="title-font sm:text-4xl md:text-2xl mb-4 font-medium text-gray-900">Thanks for registering with Mom's Heart  <FavoriteIcon /></h1>
+                            <p class="mb-8 leading-relaxed">Continue to payment to access our all prime feature and benefits and Be prime members of us for 1 Year</p>
                             <div class="flex w-full justify-center">
                                 <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={() => findUsersMatchingEmail()}>
                                     {
