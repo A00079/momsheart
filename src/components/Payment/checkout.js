@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Review from './Review';
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -65,12 +66,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Checkout(props) {
     const classes = useStyles();
+    const history = useHistory();
+
     const [activeStep, setActiveStep] = React.useState(0);
     const [paydetails, setpaydetails] = React.useState([]);
-    useEffect(() =>{
-        setpaydetails(props.location.state);
-        console.log('props checkout',paydetails)
-    },[props])
+    useEffect(() => {
+        if (sessionStorage.getItem("sessionid") !== props.match.params.id) {
+            history.push('/')
+        } else {
+            setpaydetails(props.location.state);
+        }
+
+    }, [props])
 
     return (
         <React.Fragment>

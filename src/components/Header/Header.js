@@ -56,48 +56,55 @@ import {
                     aria-labelledby="main navigation"
                     className={classes.navListDisplayFlex}
                   >
-                    <ListItem button>
-                        <ListItemText>
-                        <DirectLinkDiv
+                    <DirectLinkDiv
                           to="home"
                           spy={true}
                           smooth={true}
                           offset={50}
                           duration={500}
                         >
-                          Home
-                          </DirectLinkDiv>
-                        </ListItemText>
-                    </ListItem>
                     <ListItem button>
                         <ListItemText>
-                        <DirectLinkDiv
+                        
+                          Home
+                        </ListItemText>
+                    </ListItem>
+                    </DirectLinkDiv>
+
+
+                    <DirectLinkDiv
                           to="aboutus"
                           spy={true}
                           smooth={true}
                           offset={50}
                           duration={500}
                         >
-                          About
-                        </DirectLinkDiv>
-                        </ListItemText>
-                    </ListItem>
                     <ListItem button>
                         <ListItemText>
-                        <DirectLinkDiv
+                          About
+                        </ListItemText>
+                    </ListItem>
+                    </DirectLinkDiv>
+
+
+                    <DirectLinkDiv
                           to="contact"
                           spy={true}
                           smooth={true}
                           offset={50}
                           duration={500}
                         >
+                    <ListItem button>
+                        <ListItemText>
+                        
                           Contact
-                        </DirectLinkDiv>
+                        
                         </ListItemText>
                     </ListItem>
-                    {/* <ListItem button>
+                    </DirectLinkDiv>
+                    <ListItem button>
                         <ListItemText><MenuList /></ListItemText>
-                    </ListItem> */}
+                    </ListItem>
                   </List>
                 </Hidden>
                 <Hidden mdUp>

@@ -16,7 +16,7 @@ import firebase from "../../src/firestore.js";
 import { useHistory } from "react-router-dom";
 import { notify } from 'react-notify-toast';
 import { Link } from 'react-router-dom';
-
+import Spinner from '../components/Spinner/Spinner.js';
 
 function Copyright() {
 
@@ -63,6 +63,8 @@ export default function SignUp() {
   const [phone_number, setphone_number] = useState('');
   const [skills, setskills] = useState('');
   const [password, setpassword] = useState('');
+  const [isRegistered, setisRegistered] = useState(false);
+
 
   const handelfirstname = (value) => {
     setfirst_name(value.target.value)
@@ -89,6 +91,7 @@ export default function SignUp() {
     setpassword(value.target.value)
   }
   const handelOnSubmit = () => {
+    setisRegistered(true)
     if(!!first_name && !!last_name && !!email && !!location && !!age && !!phone_number && !!skills && !!password){
       const db = firebase.firestore();
       db.settings({});
@@ -102,7 +105,10 @@ export default function SignUp() {
         location: location,
         age: age,
         phone_number: phone_number,
-        skills: skills
+        skills: skills,
+        is_payment_done: false,
+        subscription_data: '',
+        renewal_data:''
       });
       document.getElementById('firstName').value = '';
       document.getElementById('lastName').value = '';
@@ -113,12 +119,15 @@ export default function SignUp() {
       document.getElementById('phoneno').value = '';
       document.getElementById('password').value = '';
       notify.show('You are successfully Registration. Please contact us for more information.', "custom", 4000,{ background: '#0E1717', text: "#FFFFFF" })
+      setisRegistered(false)
       history.push("/signin");
     })
     .catch((error) => {
+      setisRegistered(false)
       window.alert(error.message)
     })
     }else{
+      setisRegistered(false)
       notify.show('All fields are mandatory.', "custom", 4000, { top: '50px',background: '#0E1717', text: "#FFFFFF" })
     }
   }
@@ -242,7 +251,12 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            {
+              isRegistered ? <Spinner size='lg' spinning='spinning' />
+              :
+              'Sign Up'
+            }
+            
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

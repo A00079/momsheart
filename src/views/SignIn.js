@@ -15,7 +15,7 @@ import firebase from "../../src/firestore.js";
 import { withRouter, Redirect } from "react-router";
 import { notify } from 'react-notify-toast';
 import { Link } from 'react-router-dom';
-
+import Spinner from '../components/Spinner/Spinner.js';
 function Copyright() {
 
   return (
@@ -54,6 +54,8 @@ const SignUp = ({ history }) => {
   const classes = useStyles();
   const [useremail, setuesremail] = useState('');
   const [userpassword, setpassword] = useState('');
+  const [isloggedin, setisloggedin] = useState(false);
+
 
   const handelemail = (value) => {
     setuesremail(value.target.value)
@@ -62,17 +64,21 @@ const SignUp = ({ history }) => {
     setpassword(value.target.value)
   }
   const handelOnSubmit = () => {
+    setisloggedin(true)
     if(!!useremail && !!userpassword){
         firebase
           .auth()
           .signInWithEmailAndPassword(useremail, userpassword).then((data) => {
             notify.show('Successfully Logged In.', "custom", 4000,{ background: '#0E1717', text: "#FFFFFF",top: '500px' })
             sessionStorage.setItem("sessionid", data.user.l+data.user.uid);
+            setisloggedin(false)
             history.push("/cash-less-pay-ment/"+data.user.l+data.user.uid);
           }).catch((e) =>{
+            setisloggedin(false)
             notify.show(e.message, "custom", 4000, { background: '#0E1717', text: "#FFFFFF",top: '50px' })
           })
     }else{
+      setisloggedin(false)
       notify.show('All fields are mandatory.', "custom", 4000, { top: '50px',background: '#0E1717', text: "#FFFFFF" })
     }
   }
@@ -122,7 +128,12 @@ const SignUp = ({ history }) => {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            {
+              isloggedin?
+              <Spinner size='lg' spinning='spinning' />
+              :
+              'Sign In'
+            }
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

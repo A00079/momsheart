@@ -72,40 +72,29 @@ export default function CustomizedMenus() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {/* <StyledMenuItem>
-          <Link  to='/signin' style={{display: 'contents'}}>
+        <Link to='/signin' style={{ display: 'contents' }}>
+          <StyledMenuItem>
+
             <ListItemIcon>
               <SendIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText>
-            <DirectLinkDiv
-                          to="signIn"
-                          spy={true}
-                          smooth={true}
-                          offset={50}
-                          duration={500}
-                        >
-                          Sign In
-                        </DirectLinkDiv>
+              Sign In
             </ListItemText>
-          </Link>
-        </StyledMenuItem> */}
-        <StyledMenuItem>
+          </StyledMenuItem>
+        </Link>
+        <Link to='/signup' style={{ display: 'contents' }}>
+
+          <StyledMenuItem>
             <ListItemIcon>
-              <DraftsIcon fontSize="small" />
+              <SendIcon fontSize="small" />
             </ListItemIcon>
             <ListItemText>
-            <DirectLinkDiv
-                          to="signUp"
-                          spy={true}
-                          smooth={true}
-                          offset={50}
-                          duration={500}
-                        >
-                          Sign Up
-                        </DirectLinkDiv>
+              Sign Up
             </ListItemText>
-        </StyledMenuItem>
+          </StyledMenuItem>
+        </Link>
+
       </StyledMenu>
     </div>
   );

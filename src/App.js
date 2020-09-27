@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/cash-less-pay-ment/:id" component={Payment} />
-          <Route exact path="/check-out-pay-ment" component={Checkout} />
+          <Route exact path="/check-out-pay-ment/:id" component={Checkout} />
         </Switch>
       </Router>
     </div>
