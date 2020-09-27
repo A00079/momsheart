@@ -26,7 +26,7 @@ const Payment = (props) => {
                     .get()
                     .then(function (querySnapshot) {
                         querySnapshot.forEach(function (doc) {
-                            var docRef = db.collection("metadata").doc("razorpay-testing");
+                            var docRef = db.collection("metadata").doc("razorpay");
                             docRef.get().then(function (razorpay_details) {
                                 if (razorpay_details.exists) {
                                     console.log("Document data:", razorpay_details.data());
