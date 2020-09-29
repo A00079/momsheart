@@ -119,7 +119,7 @@ export default function SignUp() {
       document.getElementById('location').value = '';
       document.getElementById('phoneno').value = '';
       document.getElementById('password').value = '';
-      notify.show('You are successfully Registration. Please contact us for more information.', "custom", 4000,{ background: '#0E1717', text: "#FFFFFF" })
+      notify.show('Successfully Registered. Please contact us for more information.', "custom", 4000,{ background: '#0E1717', text: "#FFFFFF" })
       setisRegistered(false)
       history.push("/signin");
     })

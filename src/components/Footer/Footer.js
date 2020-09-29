@@ -97,7 +97,7 @@ class Foter extends Component {
         <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@Team Pratham</a>
                             </p>
                             <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-                                <a target="_blank" href="https://instagram.com/moms3888?igshid=89m1m8nrsnxg" class="ml-4 text-gray-500">
+                                <a target="_blank" href="https://instagram.com/_moms_heart?igshid=qg52r63twe9y" class="ml-4 text-gray-500">
                                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                                         <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
                                         <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>

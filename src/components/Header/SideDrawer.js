@@ -89,7 +89,7 @@ const SideDrawer = () => {
                 </ListItem>
             </Link>
             <Divider />
-            <Link to='/signin'>
+            <Link to='/signup'>
                 <ListItem button>
                     <ListItemText>
                         Sign Up
