@@ -108,8 +108,8 @@ export default function SignUp() {
         phone_number: phone_number,
         skills: skills,
         is_payment_done: false,
-        subscription_data: '',
-        renewal_data:''
+        subscription_date: '',
+        renewal_date:''
       });
       document.getElementById('firstName').value = '';
       document.getElementById('lastName').value = '';
