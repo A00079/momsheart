@@ -37,7 +37,7 @@ const MainSection = () =>{
                             <p style={{color: '#fff'}} className="mb-8 leading-relaxed">Join with us to give wings to your skills.</p>
                             <div class="flex w-full justify-center">
                             <Link to='/signup'>
-                            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Join Us</button>
+                            <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Click Here To Register</button>
                             </Link>
                         </div>
                         </div>

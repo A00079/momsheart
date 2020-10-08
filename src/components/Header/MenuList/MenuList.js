@@ -63,7 +63,7 @@ export default function CustomizedMenus() {
         color="warning"
         onClick={handleClick}
       >
-        Join
+        Register Here
       </Button>
       <StyledMenu
         id="customized-menu"
