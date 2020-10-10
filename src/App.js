@@ -8,6 +8,7 @@ import Favicon from 'react-favicon';
 import logo from '../src/assets/img/momslogo.jpg';
 import Notifications from 'react-notify-toast';
 import Payment from '../src/components/Payment/Payment.js';
+import UpdatePayment from '../src/components/Payment/UdatedPaymant.js';
 import Checkout from '../src/components/Payment/checkout.js';
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route exact path="/" component={LandingScreen} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/cash-less-pay-ment/:id" component={Payment} />
+          <Route exact path="/cash-less-pay-ment/:id" component={UpdatePayment} />
           <Route exact path="/check-out-pay-ment/:id" component={Checkout} />
         </Switch>
       </Router>
