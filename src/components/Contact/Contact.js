@@ -37,6 +37,8 @@ class Contact extends Component {
                                             <p class="leading-normal my-5">Contact:-</p>
                                             <p class="leading-normal my-5">8624911591</p>
                                             <p class="leading-normal my-5">9324098389</p>
+                                            <p class="leading-normal my-5">8421041591</p>
+
                                                 <span class="inline-flex">
                                                     {/* <a class="text-gray-500">
                                                         <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
